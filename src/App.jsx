@@ -104,7 +104,31 @@ const rawData = [
   { student: "Icaro Souza", day: "Quinta", time: "09h00 às 09h50", type: "AEE", teacher: "Alexandro Braz" },
   { student: "Icaro Souza", day: "Quinta", time: "09h50 às 10h40", type: "AEE", teacher: "Alexandro Braz" },
   { student: "Rafael Henrique", day: "Quinta", time: "10h40 às 11h30", type: "AEE", teacher: "Alexandro Braz" },
-  { student: "Nicollas Vicente", day: "Quinta", time: "12h20 às 13h10", type: "AEE", teacher: "Alexandro Braz" }
+  { student: "Nicollas Vicente", day: "Quinta", time: "12h20 às 13h10", type: "AEE", teacher: "Alexandro Braz" },
+
+  // Suzana Godoy
+  { student: "Enzo Henrique", day: "Terça", time: "07h00 às 07h50", type: "AEE", teacher: "Suzana Godoy" },
+  { student: "Enzo Henrique", day: "Terça", time: "07h50 às 08h40", type: "AEE", teacher: "Suzana Godoy" },
+  { student: "Vitória", day: "Terça", time: "09h00 às 09h50", type: "AEE", teacher: "Suzana Godoy" },
+  { student: "Vitória", day: "Terça", time: "09h50 às 10h40", type: "AEE", teacher: "Suzana Godoy" },
+  { student: "Gabriela", day: "Terça", time: "10h40 às 11h30", type: "AEE", teacher: "Suzana Godoy" },
+  { student: "Enzo Henrique", day: "Terça", time: "12h20 às 13h10", type: "AEE", teacher: "Suzana Godoy" },
+  
+  { student: "Enzo Henrique", day: "Quarta", time: "07h00 às 07h50", type: "AEE", teacher: "Suzana Godoy" },
+  { student: "Enzo Henrique", day: "Quarta", time: "07h50 às 08h40", type: "AEE", teacher: "Suzana Godoy" },
+  { student: "Vitória", day: "Quarta", time: "09h00 às 09h50", type: "Ens. Colaborativo", teacher: "Suzana Godoy" },
+  { student: "Gabriela", day: "Quarta", time: "09h50 às 10h40", type: "Ens. Colaborativo", teacher: "Suzana Godoy" },
+  { student: "Enzo Henrique", day: "Quarta", time: "10h40 às 11h30", type: "AEE", teacher: "Suzana Godoy" },
+  { student: "Enzo Henrique", day: "Quarta", time: "12h20 às 13h10", type: "Ens. Colaborativo", teacher: "Suzana Godoy" },
+  { student: "Enzo Henrique", day: "Quarta", time: "13h10 às 14h00", type: "Ens. Colaborativo", teacher: "Suzana Godoy" },
+  
+  { student: "Gabriela", day: "Quinta", time: "07h00 às 07h50", type: "Ens. Colaborativo", teacher: "Suzana Godoy" },
+  { student: "Vitória", day: "Quinta", time: "07h50 às 08h40", type: "Ens. Colaborativo", teacher: "Suzana Godoy" },
+  { student: "Enzo Henrique", day: "Quinta", time: "09h00 às 09h50", type: "Ens. Colaborativo", teacher: "Suzana Godoy" },
+  { student: "Enzo Henrique", day: "Quinta", time: "09h50 às 10h40", type: "Ens. Colaborativo", teacher: "Suzana Godoy" },
+  { student: "Gabriela", day: "Quinta", time: "10h40 às 11h30", type: "AEE", teacher: "Suzana Godoy" },
+  { student: "Vitória", day: "Quinta", time: "12h20 às 13h10", type: "AEE", teacher: "Suzana Godoy" },
+  { student: "Gabriela", day: "Quinta", time: "13h10 às 14h00", type: "AEE", teacher: "Suzana Godoy" }
 ];
 
 // Mapeamento dos nomes curtos do horário para Nomes Completos e Turmas
@@ -116,7 +140,7 @@ const studentsInfo = {
   "Gustavo": { fullName: "GUSTAVO DE OLIVEIRA LACERDA", grade: "2ª SÉRIE A" },
   "Marco Antonio": { fullName: "MARCO ANTONIO FERRAZ DE MELO", grade: "3ª SÉRIE B" },
   "Lucas Prado": { fullName: "LUCAS EDUARDO PRADO SOUZA", grade: "7° ANO A" },
-  "Lucas Darcio": { fullName: "LUCAS DARCIO", grade: "Não informada" }, // Nome presente no horário mas não na lista nova
+  "Lucas Darcio": { fullName: "LUCAS DARCIO", grade: "Não informada" },
   "Davi": { fullName: "DAVI GONCALVES LIMA", grade: "7° ANO A" },
   "Giovanna": { fullName: "GIOVANNA DE OLIVEIRA RICARDO", grade: "7° ANO A" },
   "Samuel": { fullName: "SAMUEL LOPES SANCHES REIS", grade: "8° ANO B" },
@@ -130,14 +154,15 @@ const studentsInfo = {
   "Maria Eduarda": { fullName: "MARIA EDUARDA BAVELONI CEZAR", grade: "2ª SERIE C" },
   "Luiz Guilherme": { fullName: "LUIZ GUILHERME MOREIRA SILVA DOS ANJOS", grade: "7° ANO A" },
   "Arthur Pereira": { fullName: "ARTHUR PEREIRA MONTEIRO", grade: "9º ANO C" },
-  "Brenda Lee": { fullName: "BRENDA LEE ARAUJO DOS SANTOS", grade: "7° ANO C" }
+  "Brenda Lee": { fullName: "BRENDA LEE ARAUJO DOS SANTOS", grade: "7° ANO C" },
+  // Novos alunos atribuídos
+  "Enzo Henrique": { fullName: "ENZO HENRIQUE DUARTE DE SANTANA", grade: "8° ANO B" },
+  "Gabriela": { fullName: "GABRIELA DE OLIVEIRA LEITE", grade: "8° ANO A" },
+  "Vitória": { fullName: "VITORIA FERREIRA DE OLIVEIRA", grade: "8° ANO A" }
 };
 
-// Alunos sem agendamento no momento (Mencionados na lista extra ou novos)
+// Alunos sem agendamento no momento
 const unscheduledStudents = [
-  { fullName: "ENZO HENRIQUE DUARTE DE SANTANA", grade: "8° ANO B" },
-  { fullName: "GABRIELA DE OLIVEIRA LEITE", grade: "8° ANO A" },
-  { fullName: "VITORIA FERREIRA DE OLIVEIRA", grade: "8° ANO A" },
   { fullName: "JOAO VICTOR ANDRADE DOS SANTOS", grade: "1ª SERIE A" },
   { fullName: "ANTHONY FERREIRA DE ARRUDA", grade: "6° ANO A" },
   { fullName: "ENZO ASSIS SATU DA SILVA RODRIGUES", grade: "6° ANO D" },
