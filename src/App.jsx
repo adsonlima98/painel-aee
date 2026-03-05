@@ -2,45 +2,55 @@ import React, { useState, useMemo } from 'react';
 import { Search, Users, Calendar, Clock, BookOpen, X, User, GraduationCap, AlertCircle } from 'lucide-react';
 
 const rawData = [
-  // Cristiane Martins
+  // ==========================================
+  // PROFESSORA: Cristiane Martins
+  // ==========================================
   { student: "Samuel", day: "Segunda", time: "07h50 às 08h40", type: "AEE", teacher: "Cristiane Martins" },
   { student: "Luiz Guilherme", day: "Segunda", time: "09h00 às 09h50", type: "AEE", teacher: "Cristiane Martins" },
   { student: "Luiz Guilherme", day: "Segunda", time: "09h50 às 10h40", type: "AEE", teacher: "Cristiane Martins" },
   { student: "Samuel", day: "Segunda", time: "10h40 às 11h30", type: "Ens. Colaborativo", teacher: "Cristiane Martins" },
+  
   { student: "Luiz Guilherme", day: "Terça", time: "07h50 às 08h40", type: "AEE", teacher: "Cristiane Martins" },
   { student: "Samuel", day: "Terça", time: "09h00 às 09h50", type: "AEE", teacher: "Cristiane Martins" },
   { student: "Samuel", day: "Terça", time: "09h50 às 10h40", type: "AEE", teacher: "Cristiane Martins" },
   { student: "Samuel", day: "Terça", time: "10h40 às 11h30", type: "Ens. Colaborativo", teacher: "Cristiane Martins" },
+  
   { student: "Luiz Guilherme", day: "Quarta", time: "07h50 às 08h40", type: "AEE", teacher: "Cristiane Martins" },
   { student: "Luiz Guilherme", day: "Quarta", time: "09h00 às 09h50", type: "Ens. Colaborativo", teacher: "Cristiane Martins" },
   { student: "Luiz Guilherme", day: "Quarta", time: "09h50 às 10h40", type: "Ens. Colaborativo", teacher: "Cristiane Martins" },
   { student: "Samuel", day: "Quarta", time: "10h40 às 11h30", type: "Ens. Colaborativo", teacher: "Cristiane Martins" },
+  
   { student: "Samuel", day: "Quinta", time: "07h50 às 08h40", type: "AEE", teacher: "Cristiane Martins" },
   { student: "Luiz Guilherme", day: "Quinta", time: "09h00 às 09h50", type: "Ens. Colaborativo", teacher: "Cristiane Martins" },
   { student: "Luiz Guilherme", day: "Quinta", time: "09h50 às 10h40", type: "Ens. Colaborativo", teacher: "Cristiane Martins" },
   { student: "Samuel", day: "Quinta", time: "10h40 às 11h30", type: "Ens. Colaborativo", teacher: "Cristiane Martins" },
+  
   { student: "Samuel", day: "Sexta", time: "07h00 às 07h50", type: "AEE", teacher: "Cristiane Martins" },
   { student: "Samuel", day: "Sexta", time: "07h50 às 08h40", type: "AEE", teacher: "Cristiane Martins" },
   { student: "Luiz Guilherme", day: "Sexta", time: "09h00 às 09h50", type: "AEE", teacher: "Cristiane Martins" },
   { student: "Luiz Guilherme", day: "Sexta", time: "09h50 às 10h40", type: "AEE", teacher: "Cristiane Martins" },
 
-  // Simone Correia
+  // ==========================================
+  // PROFESSORA: Simone Correia (HORÁRIOS NOVOS ATUALIZADOS)
+  // ==========================================
   { student: "Lucas Prado", day: "Segunda", time: "07h00 às 07h50", type: "AEE", teacher: "Simone Correia" },
   { student: "Lucas Prado", day: "Segunda", time: "07h50 às 08h40", type: "AEE", teacher: "Simone Correia" },
   { student: "Laura", day: "Segunda", time: "09h00 às 09h50", type: "AEE", teacher: "Simone Correia" },
   { student: "Laura", day: "Segunda", time: "09h50 às 10h40", type: "AEE", teacher: "Simone Correia" },
-  { student: "Lucas Darcio", day: "Segunda", time: "10h40 às 11h30", type: "AEE", teacher: "Simone Correia" },
+  { student: "Jose Ricardo", day: "Segunda", time: "10h40 às 11h30", type: "AEE", teacher: "Simone Correia" },
   { student: "Kelvin", day: "Segunda", time: "11h30 às 12h20", type: "AEE", teacher: "Simone Correia" },
   { student: "Kelvin", day: "Segunda", time: "12h20 às 13h10", type: "AEE", teacher: "Simone Correia" },
-  { student: "Lucas Darcio", day: "Segunda", time: "13h10 às 14h00", type: "AEE", teacher: "Simone Correia" },
-  { student: "Laura", day: "Terça", time: "07h00 às 07h50", type: "AEE", teacher: "Simone Correia" },
+  { student: "Laura", day: "Segunda", time: "13h10 às 14h00", type: "AEE", teacher: "Simone Correia" },
+
+  { student: "Kelvin", day: "Terça", time: "07h00 às 07h50", type: "AEE", teacher: "Simone Correia" },
   { student: "Davi", day: "Terça", time: "07h50 às 08h40", type: "AEE", teacher: "Simone Correia" },
   { student: "Giovanna", day: "Terça", time: "09h00 às 09h50", type: "AEE", teacher: "Simone Correia" },
   { student: "Giovanna", day: "Terça", time: "09h50 às 10h40", type: "AEE", teacher: "Simone Correia" },
-  { student: "Lucas Darcio", day: "Terça", time: "10h40 às 11h30", type: "AEE", teacher: "Simone Correia" },
+  { student: "Laura", day: "Terça", time: "10h40 às 11h30", type: "AEE", teacher: "Simone Correia" },
   { student: "Davi", day: "Terça", time: "11h30 às 12h20", type: "Ens. Colaborativo", teacher: "Simone Correia" },
   { student: "Kanna", day: "Terça", time: "12h20 às 13h10", type: "AEE", teacher: "Simone Correia" },
-  { student: "Laura", day: "Terça", time: "13h10 às 14h00", type: "AEE", teacher: "Simone Correia" },
+  { student: "Kelvin", day: "Terça", time: "13h10 às 14h00", type: "AEE", teacher: "Simone Correia" },
+
   { student: "Jose Ricardo", day: "Quarta", time: "07h00 às 07h50", type: "AEE", teacher: "Simone Correia" },
   { student: "Jose Ricardo", day: "Quarta", time: "07h50 às 08h40", type: "AEE", teacher: "Simone Correia" },
   { student: "Laura", day: "Quarta", time: "09h00 às 09h50", type: "AEE", teacher: "Simone Correia" },
@@ -49,7 +59,8 @@ const rawData = [
   { student: "Davi", day: "Quarta", time: "11h30 às 12h20", type: "Ens. Colaborativo", teacher: "Simone Correia" },
   { student: "Kanna", day: "Quarta", time: "12h20 às 13h10", type: "AEE", teacher: "Simone Correia" },
   { student: "Kelvin", day: "Quarta", time: "13h10 às 14h00", type: "AEE", teacher: "Simone Correia" },
-  { student: "Jose Ricardo", day: "Quinta", time: "07h00 às 07h50", type: "AEE", teacher: "Simone Correia" },
+
+  { student: "Kelvin", day: "Quinta", time: "07h00 às 07h50", type: "AEE", teacher: "Simone Correia" },
   { student: "Laura", day: "Quinta", time: "07h50 às 08h40", type: "Ens. Colaborativo", teacher: "Simone Correia" },
   { student: "Giovanna", day: "Quinta", time: "09h00 às 09h50", type: "Ens. Colaborativo", teacher: "Simone Correia" },
   { student: "Giovanna", day: "Quinta", time: "09h50 às 10h40", type: "Ens. Colaborativo", teacher: "Simone Correia" },
@@ -58,7 +69,9 @@ const rawData = [
   { student: "Laura", day: "Quinta", time: "12h20 às 13h10", type: "Ens. Colaborativo", teacher: "Simone Correia" },
   { student: "Laura", day: "Quinta", time: "13h10 às 14h00", type: "Ens. Colaborativo", teacher: "Simone Correia" },
 
-  // Barbara Massafera
+  // ==========================================
+  // PROFESSORA: Barbara Massafera
+  // ==========================================
   { student: "Brenda Lee", day: "Segunda", time: "09h50 às 10h40", type: "Ens. Colaborativo", teacher: "Barbara Massafera" },
   { student: "Arthur Pereira", day: "Segunda", time: "10h40 às 11h30", type: "Ens. Colaborativo", teacher: "Barbara Massafera" },
   { student: "Brenda Batista", day: "Segunda", time: "14h30 às 15h20", type: "Ens. Colaborativo", teacher: "Barbara Massafera" },
@@ -68,6 +81,7 @@ const rawData = [
   { student: "Brenda Batista", day: "Segunda", time: "18h10 às 19h00", type: "Ens. Colaborativo", teacher: "Barbara Massafera" },
   { student: "Gustavo", day: "Segunda", time: "19h50 às 20h40", type: "AEE", teacher: "Barbara Massafera" },
   { student: "Gustavo", day: "Segunda", time: "20h40 às 21h30", type: "AEE", teacher: "Barbara Massafera" },
+  
   { student: "Brenda Lee", day: "Terça", time: "09h50 às 10h40", type: "Ens. Colaborativo", teacher: "Barbara Massafera" },
   { student: "Arthur Pereira", day: "Terça", time: "10h40 às 11h30", type: "Ens. Colaborativo", teacher: "Barbara Massafera" },
   { student: "Brenda Batista", day: "Terça", time: "14h30 às 15h20", type: "AEE", teacher: "Barbara Massafera" },
@@ -77,6 +91,7 @@ const rawData = [
   { student: "Thiago Fernandes", day: "Terça", time: "18h10 às 19h00", type: "Ens. Colaborativo", teacher: "Barbara Massafera" },
   { student: "Marco Antonio", day: "Terça", time: "19h50 às 20h40", type: "AEE", teacher: "Barbara Massafera" },
   { student: "Marco Antonio", day: "Terça", time: "20h40 às 21h30", type: "AEE", teacher: "Barbara Massafera" },
+  
   { student: "Brenda Lee", day: "Quarta", time: "09h00 às 09h50", type: "AEE", teacher: "Barbara Massafera" },
   { student: "Brenda Lee", day: "Quarta", time: "09h50 às 10h40", type: "AEE", teacher: "Barbara Massafera" },
   { student: "Arthur Pereira", day: "Quarta", time: "10h40 às 11h30", type: "AEE", teacher: "Barbara Massafera" },
@@ -84,6 +99,7 @@ const rawData = [
   { student: "Maria Eduarda", day: "Quarta", time: "16h30 às 17h20", type: "AEE", teacher: "Barbara Massafera" },
   { student: "Maria Eduarda", day: "Quarta", time: "17h20 às 18h10", type: "AEE", teacher: "Barbara Massafera" },
   { student: "Brenda Batista", day: "Quarta", time: "18h10 às 19h00", type: "AEE", teacher: "Barbara Massafera" },
+  
   { student: "Brenda Lee", day: "Quinta", time: "09h00 às 09h50", type: "AEE", teacher: "Barbara Massafera" },
   { student: "Brenda Lee", day: "Quinta", time: "09h50 às 10h40", type: "AEE", teacher: "Barbara Massafera" },
   { student: "Arthur Pereira", day: "Quinta", time: "10h40 às 11h30", type: "AEE", teacher: "Barbara Massafera" },
@@ -92,13 +108,16 @@ const rawData = [
   { student: "Maria Eduarda", day: "Quinta", time: "17h20 às 18h10", type: "AEE", teacher: "Barbara Massafera" },
   { student: "Brenda Batista", day: "Quinta", time: "18h10 às 19h00", type: "AEE", teacher: "Barbara Massafera" },
 
-  // Alexandro Braz
+  // ==========================================
+  // PROFESSOR: Alexandro Braz
+  // ==========================================
   { student: "Nicollas Vicente", day: "Quarta", time: "07h00 às 07h50", type: "AEE", teacher: "Alexandro Braz" },
   { student: "Nicollas Vicente", day: "Quarta", time: "07h50 às 08h40", type: "AEE", teacher: "Alexandro Braz" },
   { student: "Rafael Henrique", day: "Quarta", time: "09h00 às 09h50", type: "AEE", teacher: "Alexandro Braz" },
   { student: "Rafael Henrique", day: "Quarta", time: "09h50 às 10h40", type: "AEE", teacher: "Alexandro Braz" },
   { student: "Icaro Souza", day: "Quarta", time: "10h40 às 11h30", type: "AEE", teacher: "Alexandro Braz" },
   { student: "Enzo Ap.", day: "Quarta", time: "12h20 às 13h10", type: "AEE", teacher: "Alexandro Braz" },
+  
   { student: "Enzo Ap.", day: "Quinta", time: "07h00 às 07h50", type: "AEE", teacher: "Alexandro Braz" },
   { student: "Enzo Ap.", day: "Quinta", time: "07h50 às 08h40", type: "AEE", teacher: "Alexandro Braz" },
   { student: "Icaro Souza", day: "Quinta", time: "09h00 às 09h50", type: "AEE", teacher: "Alexandro Braz" },
@@ -106,7 +125,9 @@ const rawData = [
   { student: "Rafael Henrique", day: "Quinta", time: "10h40 às 11h30", type: "AEE", teacher: "Alexandro Braz" },
   { student: "Nicollas Vicente", day: "Quinta", time: "12h20 às 13h10", type: "AEE", teacher: "Alexandro Braz" },
 
-  // Suzana Godoy
+  // ==========================================
+  // PROFESSORA: Suzana Godoy
+  // ==========================================
   { student: "Enzo Henrique", day: "Terça", time: "07h00 às 07h50", type: "AEE", teacher: "Suzana Godoy" },
   { student: "Enzo Henrique", day: "Terça", time: "07h50 às 08h40", type: "AEE", teacher: "Suzana Godoy" },
   { student: "Vitória", day: "Terça", time: "09h00 às 09h50", type: "AEE", teacher: "Suzana Godoy" },
@@ -132,6 +153,7 @@ const rawData = [
 ];
 
 // Mapeamento dos nomes curtos do horário para Nomes Completos e Turmas
+// OBS: Lucas Darcio foi removido desta lista.
 const studentsInfo = {
   "Laura": { fullName: "LAURA SATIRO MONTEIRO", grade: "8° ANO B" },
   "Nicollas Vicente": { fullName: "NICOLLAS VICENTE DE OLIVEIRA", grade: "9º ANO B" },
@@ -140,7 +162,6 @@ const studentsInfo = {
   "Gustavo": { fullName: "GUSTAVO DE OLIVEIRA LACERDA", grade: "2ª SÉRIE A" },
   "Marco Antonio": { fullName: "MARCO ANTONIO FERRAZ DE MELO", grade: "3ª SÉRIE B" },
   "Lucas Prado": { fullName: "LUCAS EDUARDO PRADO SOUZA", grade: "7° ANO A" },
-  "Lucas Darcio": { fullName: "LUCAS DARCIO", grade: "Não informada" },
   "Davi": { fullName: "DAVI GONCALVES LIMA", grade: "7° ANO A" },
   "Giovanna": { fullName: "GIOVANNA DE OLIVEIRA RICARDO", grade: "7° ANO A" },
   "Samuel": { fullName: "SAMUEL LOPES SANCHES REIS", grade: "8° ANO B" },
@@ -155,15 +176,14 @@ const studentsInfo = {
   "Luiz Guilherme": { fullName: "LUIZ GUILHERME MOREIRA SILVA DOS ANJOS", grade: "7° ANO A" },
   "Arthur Pereira": { fullName: "ARTHUR PEREIRA MONTEIRO", grade: "9º ANO C" },
   "Brenda Lee": { fullName: "BRENDA LEE ARAUJO DOS SANTOS", grade: "7° ANO C" },
-  // Novos alunos atribuídos
   "Enzo Henrique": { fullName: "ENZO HENRIQUE DUARTE DE SANTANA", grade: "8° ANO B" },
   "Gabriela": { fullName: "GABRIELA DE OLIVEIRA LEITE", grade: "8° ANO A" },
   "Vitória": { fullName: "VITORIA FERREIRA DE OLIVEIRA", grade: "8° ANO A" }
 };
 
 // Alunos sem agendamento no momento
+// OBS: Joao Victor Andrade dos Santos foi removido desta lista.
 const unscheduledStudents = [
-  { fullName: "JOAO VICTOR ANDRADE DOS SANTOS", grade: "1ª SERIE A" },
   { fullName: "ANTHONY FERREIRA DE ARRUDA", grade: "6° ANO A" },
   { fullName: "ENZO ASSIS SATU DA SILVA RODRIGUES", grade: "6° ANO D" },
   { fullName: "NICOLY DA GUIA HENARES SILVA", grade: "9º ANO E" },
